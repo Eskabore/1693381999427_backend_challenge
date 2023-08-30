@@ -1,0 +1,34 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.4'
+	id 'io.spring.dependency-management' version '1.0.0.RELEASE'
+	id 'java'
+}
+
+group = 'com.linus.finance'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('axonVersion', "4.5.11")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.axonframework:axon-spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.axonframework:axon-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.axonframework:axon-bom:${axonVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
