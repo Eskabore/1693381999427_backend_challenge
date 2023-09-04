@@ -11,9 +11,9 @@ import org.axonframework.spring.stereotype.Aggregate;
 @Aggregate
 public class LoanAggregate {
     @AggregateIdentifier
-    private Long loanId;
+    private String loanId;
     private double remainingPrincipal;
-    private  double remainingInterest;
+    private double remainingInterest;
 
     // Default Axon Constructor
     protected LoanAggregate() {}
@@ -21,12 +21,7 @@ public class LoanAggregate {
     // CommandHandler for repaying loan
     @CommandHandler
     public void handle(LoanRepaymentCommand command) {
-        // Business logic to repay the loan
-        if (remainingPrincipal < command.getPrincipalAmount() || remainingInterest < command.getInterestAmount()) {
-            throw new IllegalArgumentException("Repayment amounts exceed remaining amounts");
-        } else {
-            AggregateLifecycle.apply(new LoanRepaymentEvent(command.getLoanId(), command.getPrincipalAmount(), command.getInterestAmount()));
-        }
+        repay(command.getPrincipalAmount(), command.getInterestAmount());
     }
 
     @EventSourcingHandler
@@ -35,5 +30,13 @@ public class LoanAggregate {
         this.remainingInterest -= event.getInterestAmount();
     }
 
-    // Constructors, getters, setters,...
+    public void repay(double principalAmount, double interestAmount) {
+        if (remainingPrincipal < principalAmount || remainingInterest < interestAmount) {
+            throw new IllegalArgumentException("Repayment amounts exceed remaining amounts");
+        } else {
+            AggregateLifecycle.apply(new LoanRepaymentEvent(this.loanId, principalAmount, interestAmount));
+        }
+    }
+
+    // Other constructors, getters, setters,...
 }
