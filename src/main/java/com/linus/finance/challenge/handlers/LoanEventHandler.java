@@ -10,6 +10,6 @@ public class LoanEventHandler {
     public void handle(LoanRepaymentEvent event) {
         // Logic to distribute the repaid amount among investors
         // Temporary print
-        System.out.pritin("Loan repaid: " + event.getPrincipalAmount() + " principal and " + event.getInterestAmount() + " interest");
+        System.out.println("Loan repaid: " + event.getPrincipalAmount() + " principal and " + event.getInterestAmount() + " interest");
     }
 }
