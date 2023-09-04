@@ -23,7 +23,7 @@ public class LoanAggregate {
     public void handle(LoanRepaymentCommand command) {
         // Business logic to repay the loan
         if (remainingPrincipal < command.getPrincipalAmount() || remainingInterest < command.getInterestAmount()) {
-            // ~ throw exception
+            throw new IllegalArgumentException("Repayment amounts exceed remaining amounts");
         } else {
             AggregateLifecycle.apply(new LoanRepaymentEvent(command.getLoanId(), command.getPrincipalAmount(), command.getInterestAmount()));
         }
