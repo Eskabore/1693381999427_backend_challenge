@@ -15,10 +15,16 @@ public class LoanAggregate {
     private double remainingPrincipal;
     private  double remainingInterest;
 
+    // Default Axon Constructor
+    protected LoanAggregate() {}
+
+    // CommandHandler for repaying loan
     @CommandHandler
-    public LoanAggregate(LoanRepaymentCommand command) {
+    public void handle(LoanRepaymentCommand command) {
         // Business logic to repay the loan
-        if (/* validation passes */) {
+        if (remainingPrincipal < command.getPrincipalAmount() || remainingInterest < command.getInterestAmount()) {
+            // ~ throw exception
+        } else {
             AggregateLifecycle.apply(new LoanRepaymentEvent(command.getLoanId(), command.getPrincipalAmount(), command.getInterestAmount()));
         }
     }
