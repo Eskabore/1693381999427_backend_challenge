@@ -17,9 +17,7 @@ public class LoanRepaymentEvent {
     }
 
     public double getPrincipalAmount() {
-        return principalAmount;
-    }
-
+        return principalAmoun
     public double getInterestAmount() {
         return interestAmount;
     }
