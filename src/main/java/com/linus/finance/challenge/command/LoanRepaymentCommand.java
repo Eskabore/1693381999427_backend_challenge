@@ -1,14 +1,19 @@
 package com.linus.finance.challenge.command;
 
 public class LoanRepaymentCommand {
-    private Long loanId;
+    private String loanId;
     private double principalAmount;
     private double interestAmount;
 
     // Constructor
+    public LoanRepaymentCommand(String loanId, double principalAmount, double interestAmount) {
+        this.loanId = loanId;
+        this.principalAmount = principalAmount;
+        this.interestAmount = interestAmount;
+    }
 
     // Getters
-    public Long getLoanId() {
+    public String getLoanId() {
         return loanId;
     }
 
@@ -21,8 +26,8 @@ public class LoanRepaymentCommand {
     }
 
     // Setters
-    public Long setLoanId(Long loanId) {
-        return this.loanId = loanId;
+    public void setLoanId(String loanId) {
+        this.loanId = loanId;
     }
 
     public void setPrincipalAmount(double principalAmount) {
