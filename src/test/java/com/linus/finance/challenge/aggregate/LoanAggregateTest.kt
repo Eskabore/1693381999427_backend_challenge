@@ -38,4 +38,14 @@ class LoanAggregateTest {
         .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
             .expectEvents(LoanRepaymentEvent(loanId, principalAmount, interestAmount))
     }
+
+    @Test
+    fun testLoanRepaymentWithZeroPrincipalAndInterest() {
+        val loanId = "sampleLoanId"
+        val principalAmount = 0.0
+        val interestAmount = 0.0
+        fixture.givenNoPriorActivity()
+            .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
+            .expectNoEvents() // Assuming no events should be triggered for zero repayment
+    }
 }
