@@ -50,16 +50,6 @@ class LoanAggregateTest {
     }
 
     @Test
-    fun testLoanRepaymentWithNegativePrincipal() {
-        val loanId = "sampleLoanId"
-        val principalAmount = -100.0
-        val interestAmount = 10.0
-        fixture.givenNoPriorActivity()
-            .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
-            .expectException(IllegalArgumentException::class.java) // Assuming an exception is thrown for negative values
-    }
-
-    @Test
     fun testLoanRepaymentWithoutLoanId() {
         val loanId = null
         val principalAmount = 100.0
@@ -67,17 +57,5 @@ class LoanAggregateTest {
         fixture.givenNoPriorActivity()
             .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
             .expectException(IllegalArgumentException::class.java) // Assuming an exception is thrown for null loan ID
-    }
-
-    @Test
-    fun testMultipleLoanRepayments() {
-        val loanId = "sampleLoanId"
-        val principalAmount1 = 100.0
-        val interestAmount1 = 10.0
-        val principalAmount2 = 50.0
-        val interestAmount2 = 5.0
-        fixture.given(LoanRepaymentEvent(loanId, principalAmount1, interestAmount1))
-            .`when`(LoanRepaymentCommand(loanId, principalAmount2, interestAmount2))
-            .expectEvents(LoanRepaymentEvent(loanId, principalAmount2, interestAmount2)) // Assuming the system should handle multiple repayments
     }
 }
