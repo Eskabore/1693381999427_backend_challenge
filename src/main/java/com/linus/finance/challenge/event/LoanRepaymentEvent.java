@@ -8,7 +8,7 @@ public class LoanRepaymentEvent {
     // Constructor
     public LoanRepaymentEvent(String loanId, double principalAmount, double interestAmount) {
         this.loanId = loanId;
-        this.principalAmount =principalAmount;
+        this.principalAmount = principalAmount;
         this.interestAmount = interestAmount;
     }
 

@@ -1,6 +1,9 @@
 package com.linus.finance.challenge.command;
 
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
 public class LoanRepaymentCommand {
+    @TargetAggregateIdentifier
     private String loanId;
     private double principalAmount;
     private double interestAmount;
