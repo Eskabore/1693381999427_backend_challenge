@@ -48,4 +48,14 @@ class LoanAggregateTest {
             .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
             .expectNoEvents() // Assuming no events should be triggered for zero repayment
     }
+
+    @Test
+    fun testLoanRepaymentWithNegativePrincipal() {
+        val loanId = "sampleLoanId"
+        val principalAmount = -100.0
+        val interestAmount = 10.0
+        fixture.givenNoPriorActivity()
+            .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
+            .expectException(IllegalArgumentException::class.java) // Assuming an exception is thrown for negative values
+    }
 }
