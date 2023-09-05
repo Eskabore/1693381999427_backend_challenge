@@ -58,4 +58,15 @@ class LoanAggregateTest {
             .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
             .expectException(IllegalArgumentException::class.java) // Assuming an exception is thrown for negative values
     }
+
+    @Test
+    fun testLoanRepaymentWithoutLoanId() {
+        val loanId = null
+        val principalAmount = 100.0
+        val interestAmount = 10.0
+        fixture.givenNoPriorActivity()
+            .`when`(LoanRepaymentCommand(loanId, principalAmount, interestAmount))
+            .expectException(IllegalArgumentException::class.java) // Assuming an exception is thrown for null loan ID
+    }
+
 }
