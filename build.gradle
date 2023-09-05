@@ -24,7 +24,6 @@ dependencies {
 	implementation 'com.h2database:h2'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.axonframework:axon-spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.axonframework:axon-test'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
