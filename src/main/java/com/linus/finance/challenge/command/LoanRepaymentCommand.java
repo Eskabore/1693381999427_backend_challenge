@@ -2,11 +2,22 @@ package com.linus.finance.challenge.command;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class LoanRepaymentCommand {
     @TargetAggregateIdentifier
+    @NotEmpty(message = "Loan ID cannot be empty")
     private String loanId;
-    private double principalAmount;
-    private double interestAmount;
+    @NotNull(message = "Principal amount cannot be null")
+    @Min(value = 0, message = "Principal amount should be positive")
+    private Double principalAmount;
+
+    @NotNull(message = "Interest amount cannot be null")
+    @Min(value = 0, message = "Interest amount should be positive")
+    private Double interestAmount;
 
     // Constructor
     public LoanRepaymentCommand(String loanId, double principalAmount, double interestAmount) {

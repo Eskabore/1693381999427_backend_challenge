@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/loans")
 public class LoanController {
@@ -13,7 +15,7 @@ public class LoanController {
     private CommandGateway commandGateway;
 
     @PostMapping("/{loanId}/repay")
-    public ResponseEntity<Void> repayLoan(@PathVariable String loanId, @RequestBody LoanRepaymentCommand command) {
+    public ResponseEntity<Void> repayLoan(@PathVariable String loanId, @Valid @RequestBody LoanRepaymentCommand command) {
         try {
             commandGateway.sendAndWait(command);
             return ResponseEntity.ok().build();
