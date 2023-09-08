@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.linus.finance.challenge.projection.LoanView;
+import com.linus.finance.challenge.repository.LoanViewRepository;
 
 @RestController
 @RequestMapping("/loan-views")
