@@ -26,14 +26,27 @@ public class LoanAggregate {
     protected LoanAggregate() {
     }
 
-    // Command-handling constructors and methods
+    // Command-handling constructor for CreateLoanCommand
     @CommandHandler
     public LoanAggregate(CreateLoanCommand command) {
-        AggregateLifecycle
-                .apply(new LoanCreatedEvent(command.getLoanId(), command.getPrincipal(), command.getInterest()));
+        // Set the loanId from the command
+        this.loanId = command.getLoanId();
+        this.principal = command.getPrincipal();
+        this.interest = command.getInterest();
+        // Emit an event to signify that a loan has been created
+        AggregateLifecycle.apply(new LoanCreatedEvent(command.getLoanId(), command.getPrincipal(), command.getInterest()));
     }
 
-    // Event-sourcing handlers
+    // Command-handling method for LoanRepaymentCommand
+    @CommandHandler
+    public void handle(LoanRepaymentCommand command) {
+        // Validation logic here
+
+        // Emit an event to signify that a repayment has been made
+        AggregateLifecycle.apply(new LoanRepaymentEvent(command.getLoanId(), command.getRepaymentAmount()));
+    }
+
+    // Event-sourcing handler for LoanCreatedEvent
     @EventSourcingHandler
     public void on(LoanCreatedEvent event) {
         this.loanId = event.getLoanId();
@@ -42,10 +55,10 @@ public class LoanAggregate {
         // Update other fields
     }
 
-    // Command-handling methods
+    // Event-sourcing handler for LoanRepaymentEvent
     @EventSourcingHandler
     public void on(LoanRepaymentEvent event) {
-        // Update other fields
+        // Update the state based on the repayment
+        // For example, you might update the remaining balance
     }
-
 }
