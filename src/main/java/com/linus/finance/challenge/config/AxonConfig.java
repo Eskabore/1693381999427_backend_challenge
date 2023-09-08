@@ -16,22 +16,22 @@ import org.springframework.context.annotation.Configuration;
 public class AxonConfig {
 
     @Bean
-    public CommandBus commandBus() {
+    CommandBus commandBus() {
         return SimpleCommandBus.builder().build();
     }
 
     @Bean
-    public EventBus eventBus() {
+    EventBus eventBus() {
         return SimpleEventBus.builder().build();
     }
 
     @Bean
-    public EventStorageEngine eventStorageEngine() {
+    EventStorageEngine eventStorageEngine() {
         return new InMemoryEventStorageEngine();
     }
 
     @Bean
-    public ParameterResolverFactory parameterResolverFactory() {
+    ParameterResolverFactory parameterResolverFactory() {
         return new SpringBeanParameterResolverFactory();
     }
 
