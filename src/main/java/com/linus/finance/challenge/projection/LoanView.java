@@ -9,7 +9,17 @@ public class LoanView {
     private double interest;
 
     // Getters
-    // ...
+    public UUID getLoanId() {
+        return loanId;
+    }
+
+    public double getPrincipal() {
+        return principal;
+    }
+
+    public double getInterest() {
+        return interest;
+    }
 
     // Setters
     public void setLoanId(UUID loanId) {

@@ -26,6 +26,14 @@ public class LoanAggregate {
     protected LoanAggregate() {
     }
 
+    public double getPrincipal() {
+        return principal;
+    }
+
+    public double getInterest() {
+        return interest;
+    }
+
     // Command-handling constructor for CreateLoanCommand
     @CommandHandler
     public LoanAggregate(CreateLoanCommand command) {

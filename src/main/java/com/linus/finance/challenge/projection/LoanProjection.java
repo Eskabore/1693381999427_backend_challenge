@@ -4,6 +4,7 @@ import org.axonframework.eventhandling.EventHandler;
 
 import com.linus.finance.challenge.event.LoanCreatedEvent;
 import com.linus.finance.challenge.event.LoanRepaymentEvent;
+import com.linus.finance.challenge.repository.LoanViewRepository;
 
 public class LoanProjection {
 
