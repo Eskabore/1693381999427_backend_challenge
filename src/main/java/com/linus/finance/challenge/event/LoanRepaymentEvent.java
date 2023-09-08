@@ -6,8 +6,19 @@ public class LoanRepaymentEvent {
 
     private final UUID loanId;
     private final double repaymentAmount;
-    // other fields
 
-    // Getters and setters
-    // ...
+    // Constructor
+    public LoanRepaymentEvent(UUID loanId, double repaymentAmount) {
+        this.loanId = loanId;
+        this.repaymentAmount = repaymentAmount;
+    }
+
+    // Getters
+    public UUID getLoanId() {
+        return loanId;
+    }
+
+    public double getRepaymentAmount() {
+        return repaymentAmount;
+    }
 }

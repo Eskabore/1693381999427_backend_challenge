@@ -7,8 +7,24 @@ public class CreateLoanCommand {
     private final UUID loanId;
     private final double principal;
     private final double interest;
-    // other fields
 
-    // Getters and setters
-    // ...
+    // Constructor
+    public CreateLoanCommand(UUID loanId, double principal, double interest) {
+        this.loanId = loanId;
+        this.principal = principal;
+        this.interest = interest;
+    }
+
+    // Getters
+    public UUID getLoanId() {
+        return loanId;
+    }
+
+    public double getPrincipal() {
+        return principal;
+    }
+
+    public double getInterest() {
+        return interest;
+    }
 }

@@ -7,9 +7,22 @@ public class LoanView {
     private UUID loanId;
     private double principal;
     private double interest;
-    // other fields like remaining balance, status, etc.
 
-    // Getters and setters
+    // Getters
     // ...
+
+    // Setters
+    public void setLoanId(UUID loanId) {
+        this.loanId = loanId;
+    }
+
+    public void setPrincipal(double principal) {
+        this.principal = principal;
+    }
+
+    public void setInterest(double interest) {
+        this.interest = interest;
+    }
 }
+
 
