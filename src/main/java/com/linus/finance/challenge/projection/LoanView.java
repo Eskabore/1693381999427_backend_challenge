@@ -2,8 +2,11 @@ package com.linus.finance.challenge.projection;
 
 import java.util.UUID;
 
-public class LoanView {
+import javax.persistence.Entity;
 
+@Entity
+public class LoanView {
+    @Id
     private UUID loanId;
     private double principal;
     private double interest;
