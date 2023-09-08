@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import javax.persistence.Entity;
 
+import org.springframework.data.annotation.Id;
+
 @Entity
 public class LoanView {
     @Id
