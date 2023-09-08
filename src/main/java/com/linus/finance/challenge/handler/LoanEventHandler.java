@@ -24,7 +24,5 @@ public class LoanEventHandler {
 
         repository.save(loanView);
     }
-
-    // Add more methods to handle other events
 }
 

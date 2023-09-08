@@ -15,6 +15,4 @@ public class LoanCommandHandler {
     public void handleCreateLoan(CreateLoanCommand command) {
         commandGateway.send(command);
     }
-
-    // Add more methods to handle other commands
 }
