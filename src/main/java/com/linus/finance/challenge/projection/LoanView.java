@@ -2,9 +2,10 @@ package com.linus.finance.challenge.projection;
 
 import java.util.UUID;
 
-import javax.persistence.Entity;
-
 import org.springframework.data.annotation.Id;
+
+import jakarta.persistence.Entity;
+
 
 @Entity
 public class LoanView {
